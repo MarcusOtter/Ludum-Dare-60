@@ -10,20 +10,25 @@ public class RecycleObject : MonoBehaviour
     public float Radius => _circleCollider.radius;
 
     [SerializeField] private float timeUntilColliderEnable = 1f;
+    [SerializeField] private float spinSpeed = 500f;
 
     private Rigidbody2D _rigidbody;
     private CircleCollider2D _circleCollider;
+    private SpriteRenderer _spriteRenderer;
     
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _circleCollider = GetComponent<CircleCollider2D>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _circleCollider.enabled = false;
         timeUntilColliderEnable = Time.time + timeUntilColliderEnable;
     }
 
     private void Update()
     {
+        _spriteRenderer.transform.Rotate(GoingRight ? Vector3.back : Vector3.forward, spinSpeed * Time.deltaTime);
+
         if (_circleCollider.enabled)
         {
             return;
@@ -39,7 +44,8 @@ public class RecycleObject : MonoBehaviour
     {
         TargetBucketIndex = bucketIndex;
         var gravity = Physics2D.gravity.y * _rigidbody.gravityScale;
-        _rigidbody.linearVelocity = CalculateVelocity(_rigidbody.position, end, duration, gravity);
+        var velocity = CalculateVelocity(_rigidbody.position, end, duration, gravity);
+        _rigidbody.linearVelocity = velocity;
     }
 
     private Vector2 CalculateVelocity(Vector2 start, Vector2 end, float time, float gravity)

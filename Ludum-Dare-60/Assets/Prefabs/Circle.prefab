@@ -169,3 +169,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bffa327355e479abb90c471e20869e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecycleObject
+  timeUntilColliderEnable: 1

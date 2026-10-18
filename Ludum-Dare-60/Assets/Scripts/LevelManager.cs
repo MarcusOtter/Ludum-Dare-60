@@ -10,7 +10,8 @@ public class LevelManager : Singleton<LevelManager>
 
     private static readonly int HeartDmg = Animator.StringToHash("TakeDamage");
     private static readonly int HeartDisappear = Animator.StringToHash("Disappear");
-    
+
+    [SerializeField] private GameObject heartContainer;
     [SerializeField] private Animator[] heartAnimators;
 
     private int _hearts;
@@ -49,12 +50,14 @@ public class LevelManager : Singleton<LevelManager>
     {
         if (sceneIndex == 0)
         {
+            heartContainer.SetActive(false);
             onMainMenuLoaded.Invoke();
         }
         else
         {
             onLevelStarted?.Invoke(sceneIndex);
             _hearts = heartAnimators.Length;
+            heartContainer.SetActive(true);
         }
     }
 

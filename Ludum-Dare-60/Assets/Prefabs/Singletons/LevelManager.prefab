@@ -159,12 +159,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7538439350126402026}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.5, y: 4.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.25, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 253512847804186262}
+  m_Father: {fileID: 8237967404816393953}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2678959415482238414
 SpriteRenderer:
@@ -254,6 +254,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 40844556042039948}
   - {fileID: 7308915882185423376}
   - {fileID: 4865943828425499968}
   - {fileID: 2373872447990963770}
@@ -290,7 +291,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6509968217211754612}
-  - {fileID: 40844556042039948}
   - {fileID: 8237967404816393953}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -315,6 +315,7 @@ MonoBehaviour:
   onLevelEnded:
     m_PersistentCalls:
       m_Calls: []
+  heartContainer: {fileID: 7821115534349652430}
   heartAnimators:
   - {fileID: 6746855780991659289}
   - {fileID: 8883517334591730249}

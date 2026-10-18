@@ -530,6 +530,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 413640296}
     m_Modifications:
     - target: {fileID: 161701617197107184, guid: 5f710277e351eebee8438ed2bf802c49, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 161701617197107184, guid: 5f710277e351eebee8438ed2bf802c49, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 0.3764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 161701617197107184, guid: 5f710277e351eebee8438ed2bf802c49, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 413640297}
@@ -1285,6 +1293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 956068981}
   - component: {fileID: 956068982}
+  - component: {fileID: 956068983}
   m_Layer: 5
   m_Name: Music
   m_TagString: Untagged
@@ -1377,6 +1386,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &956068983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956068980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fb7dc9b35b72af282551c0d027ea44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiAudioFeedback
+  hoverSound: {fileID: 11400000, guid: b4bbf556aca7ee50fa6c1636e029eff7, type: 2}
+  clickSound: {fileID: 11400000, guid: ef02d8920a2edbdc580c1e788e338485, type: 2}
 --- !u!224 &1064605289 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4513538657566699780, guid: 5f710277e351eebee8438ed2bf802c49, type: 3}
@@ -1767,6 +1790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1846794004}
   - component: {fileID: 1846794005}
+  - component: {fileID: 1846794006}
   m_Layer: 5
   m_Name: Master
   m_TagString: Untagged
@@ -1859,6 +1883,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1846794006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846794003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fb7dc9b35b72af282551c0d027ea44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiAudioFeedback
+  hoverSound: {fileID: 11400000, guid: b4bbf556aca7ee50fa6c1636e029eff7, type: 2}
+  clickSound: {fileID: 11400000, guid: ef02d8920a2edbdc580c1e788e338485, type: 2}
 --- !u!224 &1862261629 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4513538657566699780, guid: 5f710277e351eebee8438ed2bf802c49, type: 3}

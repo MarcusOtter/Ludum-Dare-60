@@ -13,11 +13,15 @@ public class Bucket : MonoBehaviour
 
     private bool _isCompacting;
     private int _objectCount;
+    private Animator _animator;
 
     private static readonly Color CompactingColor = new Color32(128, 128, 128, 255);
+    private static readonly int Success = Animator.StringToHash(nameof(Success));
+    private static readonly int Compacting = Animator.StringToHash(nameof(Compacting));
 
     private void Awake()
     {
+        _animator = GetComponent<Animator>();
         SetColors(color, color);
     }
     
@@ -37,6 +41,7 @@ public class Bucket : MonoBehaviour
         else
         {
             AudioPlayer.Instance.PlaySuccess();
+            _animator.SetTrigger(Success);
         }
         
         _objectCount++;
@@ -67,6 +72,7 @@ public class Bucket : MonoBehaviour
         
         _isCompacting = true;
         AudioPlayer.Instance.PlayCompacting();
+        _animator.SetTrigger(Compacting);
         SetColors(CompactingColor, Color.white);
 
         if (compactingCooldownMax > 0f)

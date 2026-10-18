@@ -11,10 +11,14 @@ public class Paddle : MonoBehaviour
     [SerializeField] private BoxCollider2D rightWall;
     
     private Bucket[] _buckets;
+    private Animator _animator;
+
+    private static readonly int Hit = Animator.StringToHash(nameof(Hit));
     
     private void Start()
     {
         _buckets = FindObjectsByType<Bucket>().OrderBy(x => x.name).ToArray();;
+        _animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
@@ -57,6 +61,7 @@ public class Paddle : MonoBehaviour
         }
 
         AudioPlayer.Instance.PlayBounce();
+        _animator.SetTrigger(Hit);
         recycleObject.LaunchTowards(target, newIndex, floatTime, recycleObject.RemainingFireBounces - 1);
     }
 }

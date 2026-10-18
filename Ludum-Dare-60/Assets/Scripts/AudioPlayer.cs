@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioPlayer : Singleton<AudioPlayer>
 {
+    private const float InitialMasterVolume = 0.5f;
+
     [SerializeField] private CustomAudioClip bounce;
     [SerializeField] private CustomAudioClip compacting;
     [SerializeField] private CustomAudioClip damage;
@@ -11,6 +13,15 @@ public class AudioPlayer : Singleton<AudioPlayer>
 
     private AudioSource _audioSource;
     private bool _isMuted;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        if (Instance == this)
+        {
+            SetMasterVolume(InitialMasterVolume);
+        }
+    }
 
     private void Start()
     {

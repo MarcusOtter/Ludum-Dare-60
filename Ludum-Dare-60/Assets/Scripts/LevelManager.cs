@@ -56,6 +56,8 @@ public class LevelManager : Singleton<LevelManager>
         }
 
         AudioPlayer.Instance.PlayDamage();
+        Camera.main.TryGetComponent<CrtFix>(out var cameraEffects);
+        cameraEffects?.ShakeOnDamage();
 
         var lastHeartIndex = _hearts - 1;
         heartAnimators[lastHeartIndex].SetTrigger(HeartDisappear);

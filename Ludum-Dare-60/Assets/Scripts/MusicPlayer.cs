@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class MusicPlayer : Singleton<MusicPlayer>
 {
+    private const float InitialMusicVolume = 0.5f;
+
     [SerializeField] private AudioClip menuMusic;
     [SerializeField] private AudioClip levelStartedMusic;
     [SerializeField] private AudioClip gameRunningMusic;
@@ -20,6 +22,7 @@ public class MusicPlayer : Singleton<MusicPlayer>
         }
 
         _audioSource = GetComponent<AudioSource>();
+        SetVolume(InitialMusicVolume);
         _audioSource.Stop();
         if (SimpleSceneManager.CurrentSceneIndex == 0)
         {

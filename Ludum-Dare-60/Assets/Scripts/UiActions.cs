@@ -6,4 +6,9 @@ public class UiActions : MonoBehaviour
     {
         LevelManager.Instance.LoadLevel(index);
     }
+
+    public void ReloadScene()
+    {
+        LevelManager.Instance.LoadLevel(SimpleSceneManager.CurrentSceneIndex);
+    }
 }

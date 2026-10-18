@@ -33,22 +33,39 @@ public class MusicPlayer : Singleton<MusicPlayer>
 
     private void OnEnable()
     {
+        LevelManager.Instance.onMainMenuLoaded.AddListener(HandleMainMenuLoaded);
         LevelManager.Instance.onLevelStarted.AddListener(HandleLevelStarted);
     }
 
     private void OnDisable()
     {
+        LevelManager.Instance.onMainMenuLoaded.RemoveListener(HandleMainMenuLoaded);
         LevelManager.Instance.onLevelStarted.RemoveListener(HandleLevelStarted);
     }
 
-    private void HandleLevelStarted(int sceneIndex)
+    private void HandleMainMenuLoaded()
     {
         if (_musicRoutine != null)
         {
             StopCoroutine(_musicRoutine);
         }
 
-        _musicRoutine = StartCoroutine(sceneIndex == 0 ? PlayMenuMusic() : PlayLevelMusic());
+        _musicRoutine = StartCoroutine(PlayMenuMusic());
+    }
+
+    private void HandleLevelStarted(int _)
+    {
+        if (_audioSource.clip == levelStartedMusic || _audioSource.clip == gameRunningMusic)
+        {
+            return;
+        }
+
+        if (_musicRoutine != null)
+        {
+            StopCoroutine(_musicRoutine);
+        }
+
+        _musicRoutine = StartCoroutine(PlayLevelMusic());
     }
 
     private IEnumerator PlayLevelMusic()

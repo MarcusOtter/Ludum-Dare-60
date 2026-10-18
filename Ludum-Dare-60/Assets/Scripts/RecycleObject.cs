@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
 public class RecycleObject : MonoBehaviour
 {
+    public int RemainingFireBounces => _remainingFireBounces;
     public RecycleObjectType recycleObjectType;
     
     public int TargetBucketIndex { get; private set; }
@@ -13,10 +14,13 @@ public class RecycleObject : MonoBehaviour
     
     [SerializeField] private float timeUntilColliderEnable = 1f;
     [SerializeField] private float spinSpeed = 500f;
+    [SerializeField] private GameObject fireObject;
 
     private Rigidbody2D _rigidbody;
     private CircleCollider2D _circleCollider;
     private SpriteRenderer _spriteRenderer;
+    
+    private int _remainingFireBounces;
     
     private void Awake()
     {
@@ -38,6 +42,8 @@ public class RecycleObject : MonoBehaviour
     private void Update()
     {
         _spriteRenderer.transform.Rotate(GoingRight ? Vector3.back : Vector3.forward, spinSpeed * Time.deltaTime);
+        
+        fireObject.SetActive(_remainingFireBounces > 0);
 
         if (_circleCollider.enabled)
         {
@@ -50,11 +56,12 @@ public class RecycleObject : MonoBehaviour
         }
     }
     
-    public void LaunchTowards(Vector2 end, int bucketIndex, float duration)
+    public void LaunchTowards(Vector2 end, int bucketIndex, float duration, int fireBounces)
     {
         TargetBucketIndex = bucketIndex;
         var gravity = Physics2D.gravity.y * _rigidbody.gravityScale;
         var velocity = CalculateVelocity(_rigidbody.position, end, duration, gravity);
+        _remainingFireBounces = Mathf.Max(fireBounces, 0);
         _rigidbody.linearVelocity = velocity;
     }
 

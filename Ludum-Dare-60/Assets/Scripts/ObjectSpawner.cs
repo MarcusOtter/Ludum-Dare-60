@@ -57,9 +57,11 @@ public class ObjectSpawner : MonoBehaviour
 
     private void Spawn(int index)
     {
-        var recycleObject = Instantiate(_spawnEvents[index].recycleObject, transform.position, Quaternion.identity);
+        var spawnEvent = _spawnEvents[index];
+        
+        var recycleObject = Instantiate(spawnEvent.recycleObject, transform.position, Quaternion.identity);
         var targetBucket = _buckets[targetBucketIndex].transform;
-        recycleObject.LaunchTowards(targetBucket.position, targetBucketIndex, floatTime);
+        recycleObject.LaunchTowards(targetBucket.position, targetBucketIndex, floatTime, spawnEvent.fireBounces);
     }
 
     private void Complete()

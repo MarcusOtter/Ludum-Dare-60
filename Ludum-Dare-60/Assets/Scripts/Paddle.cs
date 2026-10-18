@@ -56,6 +56,6 @@ public class Paddle : MonoBehaviour
             target.x = 2f * wallX - target.x;
         }
 
-        recycleObject.LaunchTowards(target, newIndex, floatTime);
+        recycleObject.LaunchTowards(target, newIndex, floatTime, recycleObject.RemainingFireBounces - 1);
     }
 }

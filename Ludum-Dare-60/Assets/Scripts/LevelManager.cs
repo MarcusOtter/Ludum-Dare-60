@@ -7,8 +7,11 @@ public class LevelManager : Singleton<LevelManager>
     public UnityEvent onMainMenuLoaded = new();
     public UnityEvent<int> onLevelStarted = new();
     public UnityEvent<int> onLevelEnded = new();
+
+    private static readonly int HeartDmg = Animator.StringToHash("TakeDamage");
+    private static readonly int HeartDisappear = Animator.StringToHash("Disappear");
     
-    [SerializeField] private SpriteRenderer[] heartRenderers;
+    [SerializeField] private Animator[] heartAnimators;
 
     private int _hearts;
 
@@ -26,6 +29,20 @@ public class LevelManager : Singleton<LevelManager>
 
     public void TakeDamage()
     {
+        if (_hearts <= 0)
+        {
+            return;
+        }
+
+        var lastHeartIndex = _hearts - 1;
+        heartAnimators[lastHeartIndex].SetTrigger(HeartDisappear);
+
+        for (var i = 0; i < lastHeartIndex; i++)
+        {
+            heartAnimators[i].SetTrigger(HeartDmg);
+        }
+
+        _hearts--;
     }
 
     private void ChangeScene(int sceneIndex)
@@ -37,7 +54,7 @@ public class LevelManager : Singleton<LevelManager>
         else
         {
             onLevelStarted?.Invoke(sceneIndex);
-            _hearts = heartRenderers.Length;
+            _hearts = heartAnimators.Length;
         }
     }
 

@@ -14,8 +14,7 @@ public class Bucket : MonoBehaviour
 
         if (recycleObject.recycleObjectType != recycleObjectType)
         {
-            print("lost 1 life");
-            // -- life
+            LevelManager.Instance.TakeDamage();
         }
         
         Destroy(other.gameObject, 2f);

@@ -15,4 +15,4 @@ MonoBehaviour:
   time: 124.61
   fromDirection: 0
   recycleObject: {fileID: 6629879448466445346, guid: 8760c07d9197b0f93a3a890195aa9473, type: 3}
-  fireBounces: 3
+  fireBounces: 6

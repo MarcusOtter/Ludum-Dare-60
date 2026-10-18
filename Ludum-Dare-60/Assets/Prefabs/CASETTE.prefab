@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: recycleObjectType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 602547527817318680, guid: e57787ae96cd20d6c91d308650bb71e9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.53
+      objectReference: {fileID: 0}
     - target: {fileID: 2473584994876248221, guid: e57787ae96cd20d6c91d308650bb71e9, type: 3}
       propertyPath: m_Name
       value: CASETTE

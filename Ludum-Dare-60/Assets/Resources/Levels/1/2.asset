@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533ef5535b4e3d684840a9dd33d28405, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnEvent
+  Time: 10
+  recycleObject: {fileID: 266951395056241199, guid: f47e522ee7a14606988fd3c624beb96a, type: 3}
+  OnFireBounces: 0

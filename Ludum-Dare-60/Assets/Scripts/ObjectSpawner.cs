@@ -1,16 +1,15 @@
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class ObjectSpawner : MonoBehaviour
 {
+    public bool IsDone => _isDone;
+
+    [SerializeField] private FromDirection spawnerDirection;
     [SerializeField] private int targetBucketIndex;
-    [SerializeField] private float floatTime = 3f;
-    
-    [Header("Level")]
-    [SerializeField] private RecycleObject[] objectsToSpawn;
-    [SerializeField] private float[] spawnTimes;
-    [SerializeField] private UnityEvent isDone;
+    [SerializeField] private float floatTime = 2f;
+
+    private SpawnEvent[] _spawnEvents;
     
     private Bucket[] _buckets;
     private float _startTime;
@@ -19,10 +18,16 @@ public class ObjectSpawner : MonoBehaviour
     
     private void Start()
     {
+        _spawnEvents = Resources
+            .LoadAll<SpawnEvent>($"Levels/{gameObject.scene.buildIndex}")
+            .Where(x => x.fromDirection == spawnerDirection)
+            .OrderBy(x => x.time)
+            .ToArray();
+
         _buckets = FindObjectsByType<Bucket>().OrderBy(x => x.name).ToArray();
         _startTime = Time.time;
 
-        if (objectsToSpawn == null || spawnTimes == null || objectsToSpawn.Length == 0 || spawnTimes.Length == 0)
+        if (_spawnEvents == null || _spawnEvents.Length == 0)
         {
             Complete();
         }
@@ -35,10 +40,10 @@ public class ObjectSpawner : MonoBehaviour
             return;
         }
 
-        var spawnCount = Mathf.Min(objectsToSpawn.Length, spawnTimes.Length);
+        var spawnCount = _spawnEvents.Length;
         var elapsedTime = Time.time - _startTime;
 
-        while (_nextObjectIndex < spawnCount && elapsedTime >= spawnTimes[_nextObjectIndex])
+        while (_nextObjectIndex < spawnCount && elapsedTime >= _spawnEvents[_nextObjectIndex].time)
         {
             Spawn(_nextObjectIndex);
             _nextObjectIndex++;
@@ -52,7 +57,7 @@ public class ObjectSpawner : MonoBehaviour
 
     private void Spawn(int index)
     {
-        var recycleObject = Instantiate(objectsToSpawn[index], transform.position, Quaternion.identity);
+        var recycleObject = Instantiate(_spawnEvents[index].recycleObject, transform.position, Quaternion.identity);
         var targetBucket = _buckets[targetBucketIndex].transform;
         recycleObject.LaunchTowards(targetBucket.position, targetBucketIndex, floatTime);
     }
@@ -65,7 +70,6 @@ public class ObjectSpawner : MonoBehaviour
         }
 
         _isDone = true;
-        isDone?.Invoke();
         enabled = false;
     }
 }

@@ -6,6 +6,7 @@ public class Paddle : MonoBehaviour
     [SerializeField] private float floatTime = 2f;
     [SerializeField, Min(0f)] private float lateHitTolerance = 0.1f;
 
+    [SerializeField] private float bucketYOffset = 1.25f;
     [SerializeField] private BoxCollider2D leftWall;
     [SerializeField] private BoxCollider2D rightWall;
     
@@ -14,11 +15,6 @@ public class Paddle : MonoBehaviour
     private void Start()
     {
         _buckets = FindObjectsByType<Bucket>().OrderBy(x => x.name).ToArray();;
-    }
-
-    private void Update()
-    {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
@@ -47,7 +43,9 @@ public class Paddle : MonoBehaviour
         var hitBoundary = newIndex == oldIndex;
         var target = (Vector2) _buckets[newIndex].transform.position;
 
-        // Bounce
+        target.y += bucketYOffset;
+
+        // Wall bounce
         if (hitBoundary)
         {
             var wall = direction > 0 ? rightWall : leftWall;

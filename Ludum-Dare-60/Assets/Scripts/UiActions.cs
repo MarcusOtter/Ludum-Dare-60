@@ -11,4 +11,12 @@ public class UiActions : MonoBehaviour
     {
         LevelManager.Instance.LoadLevel(SimpleSceneManager.CurrentSceneIndex);
     }
+
+    public void LoadNextScene()
+    {
+        if (SimpleSceneManager.HasNextScene())
+        {
+            LevelManager.Instance.LoadLevel(SimpleSceneManager.CurrentSceneIndex + 1);
+        }
+    }
 }

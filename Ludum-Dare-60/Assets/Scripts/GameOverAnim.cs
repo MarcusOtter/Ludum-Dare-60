@@ -13,10 +13,14 @@ public class GameOverAnim : MonoBehaviour
     [SerializeField] private GameObject blocker;
 
     private Animator _animator;
+    private GameObject _retryButton;
+    private GameObject _nextLevelButton;
     
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _retryButton = transform.Find("Retry").gameObject;
+        _nextLevelButton = transform.Find("Next Level").gameObject;
     }
 
     private void OnEnable()
@@ -51,6 +55,8 @@ public class GameOverAnim : MonoBehaviour
     {
         if (LevelManager.Instance.Hearts == 0)
         {
+            _retryButton.SetActive(true);
+            _nextLevelButton.SetActive(false);
             blocker.SetActive(true);
             SetResultSprite(gameOverSprite);
             _animator.ResetTrigger(Start);
@@ -60,6 +66,8 @@ public class GameOverAnim : MonoBehaviour
 
     private void HandleLevelCompleted(int sceneIndex)
     {
+        _retryButton.SetActive(false);
+        _nextLevelButton.SetActive(SimpleSceneManager.HasNextScene());
         blocker.SetActive(true);
         SetResultSprite(levelCompletedSprite);
         _animator.ResetTrigger(Start);
@@ -73,5 +81,5 @@ public class GameOverAnim : MonoBehaviour
             resultImage.sprite = resultSprite;
         }
     }
-    
+
 }

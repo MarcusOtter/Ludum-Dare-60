@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 533ef5535b4e3d684840a9dd33d28405, type: 3}
   m_Name: 2
   m_EditorClassIdentifier: Assembly-CSharp::SpawnEvent
-  time: 10.25
+  time: 10.31
   fromDirection: 1
   recycleObject: {fileID: 3977498691214831272, guid: a620be729a52febe88f461ecaedad5d0, type: 3}
   fireBounces: 3

@@ -55,6 +55,8 @@ public class LevelManager : Singleton<LevelManager>
             return;
         }
 
+        AudioPlayer.Instance.PlayDamage();
+
         var lastHeartIndex = _hearts - 1;
         heartAnimators[lastHeartIndex].SetTrigger(HeartDisappear);
 

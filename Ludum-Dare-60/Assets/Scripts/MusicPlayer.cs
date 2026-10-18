@@ -101,4 +101,9 @@ public class MusicPlayer : Singleton<MusicPlayer>
         _audioSource.loop = loop;
         _audioSource.Play();
     }
+
+    public void SetVolume(float volume)
+    {
+        _audioSource.volume = Mathf.Clamp01(volume);
+    }
 }

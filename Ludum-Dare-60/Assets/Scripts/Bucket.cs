@@ -34,6 +34,10 @@ public class Bucket : MonoBehaviour
             LevelManager.Instance.TakeDamage();
             StartCoroutine(StartCompacting()); // Take damage = cooldown
         }
+        else
+        {
+            AudioPlayer.Instance.PlaySuccess();
+        }
         
         _objectCount++;
         if (objectCapacity > 0)
@@ -62,6 +66,7 @@ public class Bucket : MonoBehaviour
         }
         
         _isCompacting = true;
+        AudioPlayer.Instance.PlayCompacting();
         SetColors(CompactingColor, Color.white);
 
         if (compactingCooldownMax > 0f)

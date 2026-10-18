@@ -19,4 +19,14 @@ public class UiActions : MonoBehaviour
             LevelManager.Instance.LoadLevel(SimpleSceneManager.CurrentSceneIndex + 1);
         }
     }
+
+    public void SetMasterVolume(float volume)
+    {
+        AudioPlayer.Instance.SetMasterVolume(volume);
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        MusicPlayer.Instance.SetVolume(volume);
+    }
 }

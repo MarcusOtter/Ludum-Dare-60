@@ -47,3 +47,4 @@ MonoBehaviour:
   prefabsToSpawn:
   - {fileID: 253512847804186262, guid: db75136d4ac4fdee182525f8f282f9ad, type: 3}
   - {fileID: 2800807473591776407, guid: 41eadeea67f0e41b6a9f059d1d067c01, type: 3}
+  - {fileID: 2409266117798506311, guid: f0d7e096a1eec62dd80481aaba0ab785, type: 3}

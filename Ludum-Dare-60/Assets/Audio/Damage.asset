@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4f9c8c1bcc513f6b81ed332d163e2f, type: 3}
+  m_Name: Damage
+  m_EditorClassIdentifier: Assembly-CSharp::CustomAudioClip
+  audioClips:
+  - {fileID: 8300000, guid: 91ab59d1ff16b5e7c93d11c929d86aef, type: 3}
+  maxPitch: 1
+  maxVolume: 0.7
+  minPitch: 1
+  minVolume: 0.7

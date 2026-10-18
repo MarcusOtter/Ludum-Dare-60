@@ -56,6 +56,7 @@ public class Paddle : MonoBehaviour
             target.x = 2f * wallX - target.x;
         }
 
+        AudioPlayer.Instance.PlayBounce();
         recycleObject.LaunchTowards(target, newIndex, floatTime, recycleObject.RemainingFireBounces - 1);
     }
 }

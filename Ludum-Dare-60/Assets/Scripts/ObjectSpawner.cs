@@ -60,6 +60,7 @@ public class ObjectSpawner : MonoBehaviour
         var spawnEvent = _spawnEvents[index];
         
         var recycleObject = Instantiate(spawnEvent.recycleObject, transform.position, Quaternion.identity);
+        AudioPlayer.Instance.PlaySpawnedObject();
         var targetBucket = _buckets[targetBucketIndex].transform;
         recycleObject.LaunchTowards(targetBucket.position, targetBucketIndex, floatTime, spawnEvent.fireBounces);
     }

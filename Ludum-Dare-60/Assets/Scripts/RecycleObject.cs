@@ -4,11 +4,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
 public class RecycleObject : MonoBehaviour
 {
+    public RecycleObjectType recycleObjectType;
+    
     public int TargetBucketIndex { get; private set; }
     public bool GoingRight => _rigidbody.linearVelocity.x > 0;
     public bool FallingDown => _rigidbody.linearVelocity.y < 0;
     public float Radius => _circleCollider.radius;
-
+    
     [SerializeField] private float timeUntilColliderEnable = 1f;
     [SerializeField] private float spinSpeed = 500f;
 

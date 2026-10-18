@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5914041957310901950, guid: e57787ae96cd20d6c91d308650bb71e9, type: 3}
+      propertyPath: recycleObjectType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2473584994876248221, guid: e57787ae96cd20d6c91d308650bb71e9, type: 3}
       propertyPath: m_Name
       value: CASETTE

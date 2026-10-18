@@ -24,7 +24,7 @@ public class Paddle : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D coll)
     {
         coll.TryGetComponent<RecycleObject>(out var recycleObject);
-        if (!recycleObject)
+        if (recycleObject == null)
         {
             return;
         }

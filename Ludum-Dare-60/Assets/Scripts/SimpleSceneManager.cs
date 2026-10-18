@@ -33,6 +33,6 @@ public static class SimpleSceneManager
         }
     }
 
-    private static int CurrentSceneIndex => SceneManager.GetActiveScene().buildIndex;
-    private static int HighestSceneIndex => SceneManager.sceneCountInBuildSettings - 1;
+    public static int CurrentSceneIndex => SceneManager.GetActiveScene().buildIndex;
+    public static int HighestSceneIndex => SceneManager.sceneCountInBuildSettings - 1;
 }

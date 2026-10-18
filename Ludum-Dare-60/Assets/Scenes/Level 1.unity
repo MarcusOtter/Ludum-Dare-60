@@ -928,6 +928,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bucket 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1897660036256072938, guid: 4721d522fe0e3e4e081e23e64ce08e15, type: 3}
+      propertyPath: recycleObjectType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3718681094009418471, guid: 4721d522fe0e3e4e081e23e64ce08e15, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -939,6 +943,10 @@ PrefabInstance:
     - target: {fileID: 3718681094009418471, guid: 4721d522fe0e3e4e081e23e64ce08e15, type: 3}
       propertyPath: m_Color.g
       value: 0.92156863
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718681094009418471, guid: 4721d522fe0e3e4e081e23e64ce08e15, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3726989537131838169, guid: 4721d522fe0e3e4e081e23e64ce08e15, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1310,6 +1318,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3064c4659d2535bb8d100ac29422a60, type: 3}
+--- !u!1001 &6661631030509713644
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6856638252714824076, guid: 8956d7f20b9cc44849db860d9686f043, type: 3}
+      propertyPath: m_Name
+      value: SingletonSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252301453899700895, guid: 8956d7f20b9cc44849db860d9686f043, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252301453899700895, guid: 8956d7f20b9cc44849db860d9686f043, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252301453899700895, guid: 8956d7f20b9cc44849db860d9686f043, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252301453899700895, guid: 8956d7f20b9cc44849db860d9686f043, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252301453899700895, guid: 8956d7f20b9cc44849db860d9686f043, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252301453899700895, guid: 8956d7f20b9cc44849db860d9686f043, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252301453899700895, guid: 8956d7f20b9cc44849db860d9686f043, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252301453899700895, guid: 8956d7f20b9cc44849db860d9686f043, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252301453899700895, guid: 8956d7f20b9cc44849db860d9686f043, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252301453899700895, guid: 8956d7f20b9cc44849db860d9686f043, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8956d7f20b9cc44849db860d9686f043, type: 3}
 --- !u!1001 &7955079577162004301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1333,6 +1398,10 @@ PrefabInstance:
     - target: {fileID: 1630835110313311718, guid: 4721d522fe0e3e4e081e23e64ce08e15, type: 3}
       propertyPath: m_Name
       value: Bucket 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1897660036256072938, guid: 4721d522fe0e3e4e081e23e64ce08e15, type: 3}
+      propertyPath: recycleObjectType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3718681094009418471, guid: 4721d522fe0e3e4e081e23e64ce08e15, type: 3}
       propertyPath: m_Sprite
@@ -1467,3 +1536,4 @@ SceneRoots:
   - {fileID: 355187714}
   - {fileID: 513548095}
   - {fileID: 865896226}
+  - {fileID: 6661631030509713644}

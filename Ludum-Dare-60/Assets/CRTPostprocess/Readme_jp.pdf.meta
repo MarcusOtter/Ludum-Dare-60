@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2ffdce6de1ac34876881dd190f37a882
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 310692
+  packageName: CRT Postprocess - for URP, HDRP and Built-in Pipelines
+  packageVersion: 1.32
+  assetPath: Assets/CRTPostprocess/Readme_jp.pdf
+  uploadId: 976166

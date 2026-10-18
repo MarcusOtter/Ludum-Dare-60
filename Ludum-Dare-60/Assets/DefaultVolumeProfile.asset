@@ -360,6 +360,79 @@ MonoBehaviour:
   balance:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &-3480128176711397022
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8731e519cafa4fcaabe7796a79f88db4, type: 3}
+  m_Name: NTSCOverride
+  m_EditorClassIdentifier: Assembly-CSharp::CRTPostprocess.NTSCOverride
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  bufferHeight:
+    m_OverrideState: 1
+    m_Value: 480
+  outputHeight:
+    m_OverrideState: 1
+    m_Value: 240
+  crossTalkMode:
+    m_OverrideState: 1
+    m_Value: 1
+  crossTalkStrength:
+    m_OverrideState: 1
+    m_Value: 2
+  brightness:
+    m_OverrideState: 1
+    m_Value: 1
+  blackLevel:
+    m_OverrideState: 1
+    m_Value: 1
+  artifactStrength:
+    m_OverrideState: 1
+    m_Value: 1
+  fringeStrength:
+    m_OverrideState: 1
+    m_Value: 0.75
+  chromaModFrequencyScale:
+    m_OverrideState: 1
+    m_Value: 1
+  chromaPhaseShiftScale:
+    m_OverrideState: 1
+    m_Value: 1
+  blurWidth:
+    m_OverrideState: 1
+    m_Value: 1
+  curvature:
+    m_OverrideState: 1
+    m_Value: 1
+  cornerMask:
+    m_OverrideState: 1
+    m_Value: 1
+  cornerRadius:
+    m_OverrideState: 1
+    m_Value: 16
+  scanlineStrength:
+    m_OverrideState: 1
+    m_Value: 1
+  beamSpread:
+    m_OverrideState: 1
+    m_Value: 0.5
+  beamStrength:
+    m_OverrideState: 1
+    m_Value: 1
+  overscanScale:
+    m_OverrideState: 1
+    m_Value: 0.985
+  displayOrientation:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &-3386560400091697801
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -509,6 +582,7 @@ MonoBehaviour:
   - {fileID: -8186968272690591729}
   - {fileID: -3978695733392391637}
   - {fileID: -1083910812058648046}
+  - {fileID: -3480128176711397022}
 --- !u!114 &156332030701414761
 MonoBehaviour:
   m_ObjectHideFlags: 3

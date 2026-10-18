@@ -72,11 +72,11 @@ public class MusicPlayer : Singleton<MusicPlayer>
     {
         if (_audioSource.isPlaying)
         {
-            yield return new WaitForSeconds(_audioSource.clip.length - _audioSource.time);
+            yield return new WaitForSecondsRealtime(_audioSource.clip.length - _audioSource.time);
         }
 
         Play(levelStartedMusic, false);
-        yield return new WaitForSeconds(levelStartedMusic.length);
+        yield return new WaitForSecondsRealtime(levelStartedMusic.length);
         Play(gameRunningMusic, true);
         _musicRoutine = null;
     }
@@ -85,7 +85,7 @@ public class MusicPlayer : Singleton<MusicPlayer>
     {
         if (_audioSource.isPlaying)
         {
-            yield return new WaitForSeconds(_audioSource.clip.length - _audioSource.time);
+            yield return new WaitForSecondsRealtime(_audioSource.clip.length - _audioSource.time);
         }
 
         Play(menuMusic, true);

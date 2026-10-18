@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: c752cf53b25c24ce38212efd8e83176f
+AssetOrigin:
+  serializedVersion: 1
+  productId: 310692
+  packageName: CRT Postprocess - for URP, HDRP and Built-in Pipelines
+  packageVersion: 1.32
+  assetPath: Assets/CRTPostprocess/Scripts/URP/NTSCPass.cs
+  uploadId: 976166

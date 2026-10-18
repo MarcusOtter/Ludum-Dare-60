@@ -11,6 +11,7 @@ public class LevelManager : Singleton<LevelManager>
     public UnityEvent onMainMenuLoaded = new();
     public UnityEvent<int> onLevelStarted = new();
     public UnityEvent<int> onLevelEnded = new();
+    public UnityEvent<int> onLevelCompleted = new();
 
     private static readonly int HeartDmg = Animator.StringToHash("TakeDamage");
     private static readonly int HeartDisappear = Animator.StringToHash("Disappear");
@@ -69,6 +70,38 @@ public class LevelManager : Singleton<LevelManager>
             onLevelEnded.Invoke(SimpleSceneManager.CurrentSceneIndex);
         }
     }
+
+    public void CheckLevelCompleted(RecycleObject removedObject = null)
+    {
+        if (SimpleSceneManager.CurrentSceneIndex == 0 || _hearts <= 0)
+        {
+            return;
+        }
+
+        var spawners = FindObjectsByType<ObjectSpawner>();
+        if (spawners.Length == 0)
+        {
+            return;
+        }
+
+        foreach (var spawner in spawners)
+        {
+            if (!spawner.IsDone)
+            {
+                return;
+            }
+        }
+
+        foreach (var recycleObject in FindObjectsByType<RecycleObject>())
+        {
+            if (!ReferenceEquals(recycleObject, removedObject))
+            {
+                return;
+            }
+        }
+
+        onLevelCompleted.Invoke(SimpleSceneManager.CurrentSceneIndex);
+    }
     
     private void ChangeScene(int sceneIndex)
     {
@@ -80,12 +113,12 @@ public class LevelManager : Singleton<LevelManager>
         
         levelProgressImage.transform.parent.gameObject.SetActive(sceneIndex != 0);
         levelProgressText.SetActive(sceneIndex != 0);
+        heartContainer.SetActive(sceneIndex != 0);
         
 
         if (sceneIndex == 0)
         {
             _levelDuration = 0f;
-            heartContainer.SetActive(false);
             onMainMenuLoaded.Invoke();
         }
         else
@@ -98,7 +131,6 @@ public class LevelManager : Singleton<LevelManager>
             {
                 animator.ResetControllerState();
             }
-            heartContainer.SetActive(true);
         }
     }
 

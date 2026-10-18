@@ -71,5 +71,6 @@ public class ObjectSpawner : MonoBehaviour
 
         _isDone = true;
         enabled = false;
+        LevelManager.Instance.CheckLevelCompleted();
     }
 }

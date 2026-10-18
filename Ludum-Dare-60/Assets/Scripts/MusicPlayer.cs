@@ -55,14 +55,17 @@ public class MusicPlayer : Singleton<MusicPlayer>
 
     private void HandleLevelStarted(int _)
     {
-        if (_audioSource.clip == levelStartedMusic || _audioSource.clip == gameRunningMusic)
-        {
-            return;
-        }
-
+        // A menu transition may be waiting for the current level loop to finish.
+        // Cancel it before deciding whether the existing level music can continue.
         if (_musicRoutine != null)
         {
             StopCoroutine(_musicRoutine);
+            _musicRoutine = null;
+        }
+
+        if (_audioSource.clip == levelStartedMusic || _audioSource.clip == gameRunningMusic)
+        {
+            return;
         }
 
         _musicRoutine = StartCoroutine(PlayLevelMusic());

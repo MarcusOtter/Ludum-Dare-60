@@ -27,6 +27,14 @@ public class RecycleObject : MonoBehaviour
         timeUntilColliderEnable = Time.time + timeUntilColliderEnable;
     }
 
+    private void OnDestroy()
+    {
+        if (LevelManager.Instance != null)
+        {
+            LevelManager.Instance.CheckLevelCompleted(this);
+        }
+    }
+
     private void Update()
     {
         _spriteRenderer.transform.Rotate(GoingRight ? Vector3.back : Vector3.forward, spinSpeed * Time.deltaTime);

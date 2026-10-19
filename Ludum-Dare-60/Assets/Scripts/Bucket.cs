@@ -36,7 +36,7 @@ public class Bucket : MonoBehaviour
         if (_isCompacting || recycleObject.recycleObjectType != recycleObjectType || recycleObject.RemainingFireBounces > 0)
         {
             LevelManager.Instance.TakeDamage();
-            StartCoroutine(StartCompacting()); // Take damage = cooldown
+            // StartCoroutine(StartCompacting()); // Take damage = cooldown
         }
         else
         {

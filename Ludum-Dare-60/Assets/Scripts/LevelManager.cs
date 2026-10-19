@@ -24,6 +24,7 @@ public class LevelManager : Singleton<LevelManager>
     private int _hearts;
     private float _levelStartTime;
     private float _levelDuration;
+    private bool _lostLifeThisLevel;
 
     private void Start()
     {
@@ -44,6 +45,7 @@ public class LevelManager : Singleton<LevelManager>
 
     public void LoadLevel(int sceneIndex)
     {
+        AudioPlayer.Instance?.StopAllSoundEffects();
         SceneManager.LoadScene(sceneIndex);
         ChangeScene(sceneIndex);
     }
@@ -68,11 +70,20 @@ public class LevelManager : Singleton<LevelManager>
         }
 
         _hearts--;
+        _lostLifeThisLevel = true;
 
         if (_hearts <= 0)
         {
             onLevelEnded.Invoke(SimpleSceneManager.CurrentSceneIndex);
         }
+    }
+
+    public void ConfigureInfiniteMode()
+    {
+        _levelDuration = 0f;
+        levelProgressImage.fillAmount = 0f;
+        levelProgressImage.transform.parent.gameObject.SetActive(false);
+        levelProgressText.SetActive(false);
     }
 
     public void CheckLevelCompleted(RecycleObject removedObject = null)
@@ -104,19 +115,26 @@ public class LevelManager : Singleton<LevelManager>
             }
         }
 
-        onLevelCompleted.Invoke(SimpleSceneManager.CurrentSceneIndex);
+        var sceneIndex = SimpleSceneManager.CurrentSceneIndex;
+        if (!_lostLifeThisLevel)
+        {
+            PlayerProgress.RecordFlawlessCompletion(sceneIndex);
+        }
+
+        onLevelCompleted.Invoke(sceneIndex);
     }
     
     private void ChangeScene(int sceneIndex)
     {
+        var isInfinite = FindAnyObjectByType<InfiniteSpawnDirector>() != null;
         if (levelProgressImage != null)
         {
             levelProgressImage.fillAmount = 0f;
         }
 
         
-        levelProgressImage.transform.parent.gameObject.SetActive(sceneIndex != 0);
-        levelProgressText.SetActive(sceneIndex != 0);
+        levelProgressImage.transform.parent.gameObject.SetActive(sceneIndex != 0 && !isInfinite);
+        levelProgressText.SetActive(sceneIndex != 0 && !isInfinite);
         heartContainer.SetActive(sceneIndex != 0);
         
 
@@ -128,7 +146,8 @@ public class LevelManager : Singleton<LevelManager>
         else
         {
             _levelStartTime = Time.time;
-            _levelDuration = GetLevelDuration(sceneIndex);
+            _levelDuration = isInfinite ? 0f : GetLevelDuration(sceneIndex);
+            _lostLifeThisLevel = false;
             onLevelStarted?.Invoke(sceneIndex);
             _hearts = heartAnimators.Length;
             foreach (var animator in heartAnimators)

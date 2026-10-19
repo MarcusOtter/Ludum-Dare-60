@@ -4,6 +4,7 @@ public static class SimpleSceneManager
 {
     public static void ReloadScene()
     {
+        AudioPlayer.Instance?.StopAllSoundEffects();
         SceneManager.LoadScene(CurrentSceneIndex);
     }
 

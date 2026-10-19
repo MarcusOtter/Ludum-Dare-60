@@ -39,6 +39,17 @@ public class AudioPlayer : Singleton<AudioPlayer>
     public void PlaySpawnedObject() => PlaySoundEffect(spawnedObject);
     public void PlaySuccess() => PlaySoundEffect(success);
 
+    public void StopAllSoundEffects()
+    {
+        // AudioPlayer persists across scenes, as do the temporary sources used
+        // for pitch-varied SFX. Stop both the root one-shot source and all of
+        // those children before a restart.
+        foreach (var source in GetComponentsInChildren<AudioSource>(true))
+        {
+            source.Stop();
+        }
+    }
+
     public void SetMasterVolume(float volume)
     {
         AudioListener.volume = Mathf.Clamp01(volume);
